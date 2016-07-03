@@ -1,4 +1,35 @@
 <html>
+<head>
+<style>
+input
+{
+	padding:5px;
+	background-color:black;
+	color:white;
+	border-radius: 15px;
+}
+input:hover
+{
+	border-color: red;
+}
+#submit
+{
+	padding:12px;
+	font-style:bold;
+	color:white;
+	background-color:black;
+	font-size:18px;
+}
+#submit:hover
+{
+	font-size:20px;
+}
+div
+{
+	border-radius: 80px;
+}
+</style>
+</head>
 <body>
 	<center><br>
 	<h1>Donor Registration Page</h1>
@@ -15,9 +46,8 @@
 		Willing to be a <input type="radio" name="donor_type" value="live_donor">Live Donor
 		&nbsp; &nbsp; <input type="radio" name="donor_type" value="cadaveric_donor">Cadaveric Donor
 		<br><br>
-		<input type="submit" value="SUBMIT" style="padding:10px;">
+		<input type="submit" value="SUBMIT" id="submit" >
 	</form>
-	<br><br>
 	<div>
 </body>
 </html>
