@@ -24,27 +24,32 @@ input:hover
 {
 	font-size:20px;
 }
-div
+div#div1
 {
 	border-radius: 80px;
+	background-color:grey;
+	width:800px;
+	padding:20px;
+	color:white;
+	font-size:18px;
 }
 </style>
 </head>
 <body>
 	<center><br>
-	<h1>Donor Registration Page</h1>
+	<h1>Donor Registration</h1>
 	<hr><br>
-	<div style="background-color:grey;width:800px;padding:20px;color:white;font-size:18px;">
+	<div id="div1">
 	<br><br>
-	<form action="" method="post">
-		Name : <input type="text" name="name"><br><br>
-		Age  : <input type="number" name="age"><br><br>
-		Gender : &nbsp; <input type="radio" name="gender" value="male">Male
-		&nbsp; &nbsp; <input type="radio" name="gender" value="female">Female<br><br>
-		Date of Birth : <input type="date" name="dob"><br><br>
-		Contact Number : <input type="number" name="contact_no"><br><br>
-		Willing to be a <input type="radio" name="donor_type" value="live_donor">Live Donor
-		&nbsp; &nbsp; <input type="radio" name="donor_type" value="cadaveric_donor">Cadaveric Donor
+	<form action="donor_registration" method="post">
+		Name : <input type="text" name="name" required><br><br>
+		Age  : <input type="number" name="age" required><br><br>
+		Gender : &nbsp; <input type="radio" name="gender" value="male" required>Male
+		&nbsp; &nbsp; <input type="radio" name="gender" value="female" required>Female<br><br>
+		Date of Birth : <input type="date" name="dob" required><br><br>
+		Contact Number : <input type="number" name="contact_no" required><br><br>
+		Willing to be a <input type="radio" name="donor_type" value="live_donor" required>Live Donor
+		&nbsp; &nbsp; <input type="radio" name="donor_type" value="cadaveric_donor" required>Cadaveric Donor
 		<br><br>
 		<input type="submit" value="SUBMIT" id="submit" >
 	</form>
