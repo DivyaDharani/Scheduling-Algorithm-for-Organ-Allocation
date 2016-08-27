@@ -1,0 +1,16 @@
+<html>
+<head>
+	<script>
+		var sessionValue = '<%=Session["name"]%>';
+		//var name = obj.getName();
+		window.alert(sessionValue);
+		//document.findElementById("div1").innerHTML= name;
+	</script>
+</head>
+	<body>
+		<div id="div1"></div>
+		<form action="sampleServlet" method="post">
+			<input type="submit" value="Submit">
+		</form>
+	</body>
+</html>

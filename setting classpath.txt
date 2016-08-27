@@ -1,3 +1,4 @@
 set path=C:\Program Files\Java\jdk1.7.0\bin
 
 set classpath=C:\ProgramFiles\Java\jdk1.7.0\lib;C:\xampp\tomcat\lib\servlet-api.jar;C:\xampp\tomcat\lib\mysql-connector-java-5.1.36
+

@@ -15,13 +15,13 @@ public class DonorRegistration extends HttpServlet
 		String contact_no = req.getParameter("contact_no");
 		String donor_type = req.getParameter("donor_type");
 
-		PrintWriter print = res.getWriter();
-		print.println("<html><body><center>Thank you for registering with us "+name+"!");
+		PrintWriter pw = res.getWriter();
+		pw.println("<html><body><center>Thank you for registering with us "+name+"!");
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/kidney_transplantation","root","root");
-			String sql="create table willing_donors(Name VARCHAR(20),Age INT, DOB VARCHAR(10),Gender VARCHAR(6),Contact_number VARCHAR(10),Donor_type VARCHAR(15))";
+			String sql="create table willing_donors(Name VARCHAR(20),Age INT, DOB VARCHAR(10),Gender VARCHAR(6),ContactNumber VARCHAR(10),DonorType VARCHAR(15))";
 			PreparedStatement pstmt=null;
 			try
 			{
@@ -46,10 +46,10 @@ public class DonorRegistration extends HttpServlet
 		catch(Exception ex)
 		{
 			StringWriter sw = new StringWriter();
-			PrintWriter pw = new PrintWriter(sw);
-			ex.printStackTrace(pw);
+			PrintWriter pwr = new PrintWriter(sw);
+			ex.printStackTrace(pwr);
 			String stackTrace = sw.toString();
-			print.println(stackTrace);
+			pw.println(stackTrace);
 		}
 
 	}
