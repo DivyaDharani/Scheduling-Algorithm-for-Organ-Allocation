@@ -8,12 +8,12 @@
 		    document.getElementById("div1").innerHTML = x.value;
 		    if(x!=y)
 		    {
-		    	document.getElementById("div1").innerHTML = "Passwords don't match";
+		    	document.getElementById("div1").innerHTML = "Passwords didn't match";
 		    	return false;
 		    }
 		    else
 		   	{
-		    	document.getElementById("div1").innerHTML = "Passwords match";
+		    	document.getElementById("div1").innerHTML = "Passwords matched";
 		   		return true;
 		   	}
 			}
@@ -25,7 +25,11 @@
 	<div>
 	For your convenience, we don't ask all your personal details now. Take your own time to update later!!
 	</div><br><br>
-
+	<div id="errordiv" style="color:red;">
+	<% if(session.getAttribute("error")!=null)
+			out.println(session.getAttribute("error"));
+	%>
+	</div><br><br>
 	<form action="register" method="post" onsubmit="return check_password()">
 		Registration Type : 
 		<select name="registration_option">

@@ -10,7 +10,7 @@ input
 }
 input:hover
 {
-	border-color: red;
+	border-color: blue;
 }
 #submit
 {
@@ -37,20 +37,20 @@ div#div1
 </head>
 <body>
 	<center><br>
-	<h1>Donor Registration</h1>
+	<h1>Your personal details</h1>
 	<hr><br>
 	<div id="div1">
 	<br><br>
-	<form action="donor_registration" method="post">
+	<form action="personal_details" method="post">
 		Name : <input type="text" name="name" required><br><br>
 		Age  : <input type="number" name="age" required><br><br>
 		Gender : &nbsp; <input type="radio" name="gender" value="male" required>Male
 		&nbsp; &nbsp; <input type="radio" name="gender" value="female" required>Female<br><br>
 		Date of Birth : <input type="date" name="dob" required><br><br>
 		Contact Number : <input type="number" name="contact_no" required><br><br>
-		Willing to be a <input type="radio" name="donor_type" value="live_donor" required>Live Donor
-		&nbsp; &nbsp; <input type="radio" name="donor_type" value="cadaveric_donor" required>Cadaveric Donor
-		<br><br>
+		<!--Wanna be a <input type="radio" name="type" value="donor" required>Donor
+		&nbsp; &nbsp; <input type="radio" name="type" value="recipient" required>Recipient
+		<br><br>-->
 		<input type="submit" value="SUBMIT" id="submit" >
 	</form>
 	<div>

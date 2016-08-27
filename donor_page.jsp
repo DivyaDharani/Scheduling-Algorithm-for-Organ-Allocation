@@ -7,16 +7,19 @@
 			border:2px solid grey;
 			border-collapse:collapse;
 		}
-		div
+		button
 		{
-			font-size:20px;
-			padding:15px;
+			font-size:15px;
+			padding-top:10px;
+			padding-bottom:10px;
 			width:200px;
-			height:30px;
+			height:50px;
+			text-align:center;
 		}
-		div:hover
+		button:hover
 		{
 				background-color: grey;
+				color:white;
 		}
 	</style>
 	<script>
@@ -29,14 +32,14 @@
 </head>
 <body>
 	<br><br>
-	<h1>DONOR PAGE</h1>
-	<!--<%= session.getAttribute("name") %>-->
+	<h1>PROFILE PAGE</h1>
+	
 	<br><br><br>
 	<table>
 		<tr>
-			<td><div onclick="redirect_to('donor_registration_page.html')"><b>Edit your profile</b></div></td>
-			<td><div onclick="redirect_to('medical_report.html')"><b>Submit medical details</b></div></td>
-			<td><div onclick="redirect_to('find_recipient')"><b>Search for a Recipient</b></div></td>
+			<td><button onclick="redirect_to('personal_details.jsp')"><b>Submit your personal details</b></button></td>
+			<td><button onclick="redirect_to('medical_report.html')"><b>Submit medical details</b></button></td>
+			<td><button onclick="redirect_to('find_recipient')"><b>Search for a Recipient</b></button></td>
 		</tr>
 	</table>	
 </body>

@@ -28,12 +28,12 @@
      Welcome to Tomcat
   </description>
   <servlet>
-    <servlet-name>donor_reg</servlet-name>
-    <servlet-class>DonorRegistration</servlet-class>
+    <servlet-name>personal_details</servlet-name>
+    <servlet-class>PersonalDetails</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>donor_reg</servlet-name>
-    <url-pattern>/donor_registration</url-pattern>
+    <servlet-name>personal_details</servlet-name>
+    <url-pattern>/personal_details</url-pattern>
   </servlet-mapping>
 
   <servlet>

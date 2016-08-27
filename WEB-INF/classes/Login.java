@@ -1,6 +1,5 @@
 import javax.servlet.http.*;
 import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
 import java.io.*;
 import java.sql.*;
 
@@ -66,10 +65,11 @@ public class Login extends HttpServlet
 			else
 			{
 				session.setAttribute("error","No registered user in the name "+user_name+"!");
-				RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
-				dispatcher.forward(req,res);
+				//RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
+				//dispatcher.forward(req,res);
+				res.sendRedirect("login.jsp");
 			}
-			///////create donor/recipient instance and pass it to next code
+			//create donor/recipient instance and pass it to next code
 			
 			
 		}

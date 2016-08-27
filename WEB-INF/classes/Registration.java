@@ -14,14 +14,15 @@ public class Registration extends HttpServlet
 		String password = req.getParameter("password");
 		
 		PrintWriter pw = res.getWriter();
-		pw.println("<html><body><center>Thank you for registering with us "+user_name+"!");
+		
+		HttpSession session = req.getSession();
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/kidney_transplantation","root","root");
 			
 			PreparedStatement pstmt=null;
-			String sql="create table "+table_name+"(ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,RegistrationType VARCHAR(15),UserName VARCHAR(20),Password VARCHAR(20))";
+			String sql="create table "+table_name+"(ID INT NOT NULL AUTO_INCREMENT,RegistrationType VARCHAR(15),UserName VARCHAR(20) NOT NULL ,Password VARCHAR(20) NOT NULL,PRIMARY KEY(ID,UserName))";
 		
 			try
 			{
@@ -37,6 +38,13 @@ public class Registration extends HttpServlet
 			pstmt.setString(2,user_name);
 			pstmt.setString(3,password);
 			pstmt.executeUpdate();
+			pw.println("<html><body><center>Thank you for registering with us "+user_name+"!");
+			session.setAttribute("error","");
+			if(registration_option.equals("donor"))
+			{
+				RequestDispatcher dispatcher = req.getRequestDispatcher("donor_page.jsp");
+				dispatcher.forward(req,res);
+			}
 		}
 		catch(Exception ex)
 		{
@@ -45,6 +53,8 @@ public class Registration extends HttpServlet
 			ex.printStackTrace(pwr);
 			String stackTrace = swr.toString();
 			pw.println(stackTrace);
+			session.setAttribute("error","User already exists!!");
+			res.sendRedirect("register.jsp");
 		}
 
 	}

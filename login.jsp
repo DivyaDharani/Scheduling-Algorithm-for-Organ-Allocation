@@ -1,13 +1,4 @@
 <html>
-<head>
-	<script>
-		/*//var error = '<%= session.getAttribute("error") %>';
-		var error = '<%= session.getAttribute("error") %>' ;
-		//window.alert(error);
-		if(error!=null)
-			document.getElementById("errordiv").innerHTML = error;*/
-	</script>
-</head>
 <center>
 <br><br><br><br><br><br>
 <div id="errordiv" style="color:red;">
@@ -30,6 +21,6 @@
 	<br><br>
 	Don't have an account? 
 	<br><br>
-	<a href="/kidney_transplantation/register">Register here</a>
+	<a href="register">Register here</a>
 
 </html>

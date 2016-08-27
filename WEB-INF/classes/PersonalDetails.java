@@ -3,7 +3,7 @@ import javax.servlet.*;
 import java.io.*;
 import java.sql.*;
 
-public class DonorRegistration extends HttpServlet
+public class PersonalDetails extends HttpServlet
 {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
@@ -13,15 +13,19 @@ public class DonorRegistration extends HttpServlet
 		String dob = req.getParameter("dob");
 		String gender = req.getParameter("gender");
 		String contact_no = req.getParameter("contact_no");
-		String donor_type = req.getParameter("donor_type");
-
+		HttpSession session = req.getSession();
+		String type = (String) session.getAttribute("type");
 		PrintWriter pw = res.getWriter();
-		pw.println("<html><body><center>Thank you for registering with us "+name+"!");
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/kidney_transplantation","root","root");
-			String sql="create table willing_donors(Name VARCHAR(20),Age INT, DOB VARCHAR(10),Gender VARCHAR(6),ContactNumber VARCHAR(10),DonorType VARCHAR(15))";
+			String field="";
+			if(type.equals("donor"))
+				field = "DonorID";
+			else if (type.equals("recipient"))
+				field = "RecipientID";
+			String sql="create table "+type+"_details ("+field+" int NOT NULL,Name VARCHAR(20),Age INT, DOB VARCHAR(10),Gender VARCHAR(6),ContactNumber VARCHAR(10),Type VARCHAR(15),FOREIGN KEY("+field+") REFERENCES "+type+"_credentials(ID))";
 			PreparedStatement pstmt=null;
 			try
 			{
@@ -34,21 +38,22 @@ public class DonorRegistration extends HttpServlet
 			{
 				//table already exists
 			}
-			pstmt =conn.prepareStatement("insert into willing_donors values(?,?,?,?,?,?)");
-			pstmt.setString(1,name);
-			pstmt.setInt(2,age);
-			pstmt.setString(3,dob);
-			pstmt.setString(4,gender);
-			pstmt.setString(5,contact_no);
-			pstmt.setString(6,donor_type);
+			pstmt =conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?)");
+			pstmt.setInt(1,(Integer)session.getAttribute("ID"));
+			pstmt.setString(2,name);
+			pstmt.setInt(3,age);
+			pstmt.setString(4,dob);
+			pstmt.setString(5,gender);
+			pstmt.setString(6,contact_no);
+			pstmt.setString(7,type);
 			pstmt.executeUpdate();
 		}
 		catch(Exception ex)
 		{
-			StringWriter sw = new StringWriter();
-			PrintWriter pwr = new PrintWriter(sw);
+			StringWriter swr = new StringWriter();
+			PrintWriter pwr = new PrintWriter(swr);
 			ex.printStackTrace(pwr);
-			String stackTrace = sw.toString();
+			String stackTrace = swr.toString();
 			pw.println(stackTrace);
 		}
 

@@ -14,10 +14,14 @@ public class MedicalReport extends HttpServlet
 				PreparedStatement pstmt = null;
 				String sql;
 				HttpSession session = req.getSession();
-				String type = session.getParameter("type");
-				String table_name = type+"_medical_report"
+				String type = (String)session.getAttribute("type");
+				String table_name = type+"_medical_report";
 				sql="create table "+table_name+"(DonorID int, FOREIGN KEY(DonorID) REFERENCES "+type+"_credentials(ID))";
 				//include medical report fields
+			}
+			catch(Exception ex)
+			{
+
 			}
 		}
 }
