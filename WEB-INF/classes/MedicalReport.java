@@ -16,7 +16,8 @@ public class MedicalReport extends HttpServlet
 				HttpSession session = req.getSession();
 				String type = session.getParameter("type");
 				String table_name = type+"_medical_report"
-				sql="create table "+table_name+"()";
+				sql="create table "+table_name+"(DonorID int, FOREIGN KEY(DonorID) REFERENCES "+type+"_credentials(ID))";
+				//include medical report fields
 			}
 		}
 }
