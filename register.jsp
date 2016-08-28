@@ -26,8 +26,8 @@
 	For your convenience, we don't ask all your personal details now. Take your own time to update later!!
 	</div><br><br>
 	<div id="errordiv" style="color:red;">
-	<% if(session.getAttribute("error")!=null)
-			out.println(session.getAttribute("error"));
+	<% if(session.getAttribute("reg_error")!=null)
+			out.println(session.getAttribute("reg_error"));
 	%>
 	</div><br><br>
 	<form action="register" method="post" onsubmit="return check_password()">

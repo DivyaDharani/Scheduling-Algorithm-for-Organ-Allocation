@@ -62,4 +62,14 @@
     <servlet-name>sample</servlet-name>
     <url-pattern>/sampleServlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>medical_report</servlet-name>
+    <servlet-class>MedicalReport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>medical_report</servlet-name>
+    <url-pattern>/medical_report</url-pattern>
+  </servlet-mapping>
+
 </web-app>

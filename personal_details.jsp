@@ -39,6 +39,7 @@ div#div1
 	<center><br>
 	<h1>Your personal details</h1>
 	<hr><br>
+	<div><b>Note:</b>&nbsp;&nbsp;If you have already given your personal details, filling this form will update your details!</div><br><br>
 	<div id="div1">
 	<br><br>
 	<form action="personal_details" method="post">

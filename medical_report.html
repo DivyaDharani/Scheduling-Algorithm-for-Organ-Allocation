@@ -6,7 +6,7 @@
 	<form action="medical_report" method="post">
 		<table border="2" cellpadding="10" cellspacing="20" style="border-collapse:collapse;">
 			<tr><th>Verified Date of Birth</th>
-				<td><input type="date" name="dob"></td>
+				<td><input type="date" name="dob" required></td>
 			</tr>
 			<tr><th>Blood Group</th>
 			<td>
@@ -19,9 +19,10 @@
 			</td></tr>
 			<tr><th>HLA Type</th>
 				<td>
-					HLA-A &nbsp;&nbsp;&nbsp;<input type="number" name="hla_a_1" max_length="5">&nbsp;&nbsp;<input type="number" name="hla_a_2" size="5"> <br><br>
-					HLA-B &nbsp;&nbsp;&nbsp;<input type="number" name="hla_b_1" max_length="5">&nbsp;&nbsp;<input type="number" name="hla_b_2" size="5"> <br><br>
-					HLA-DR <input type="number" name="hla_dr_1" max_length="5">&nbsp;&nbsp;<input type="number" name="hla_dr_2" size="5">
+					HLA-A &nbsp;&nbsp;&nbsp;<input type="number" name="hla_a_1" max_length="5" required>&nbsp;&nbsp;<input type="number" name="hla_a_2" size="5" required> <br><br>
+					HLA-B &nbsp;&nbsp;&nbsp;<input type="number" name="hla_b_1" max_length="5" required>&nbsp;&nbsp;<input type="number" name="hla_b_2" size="5" required> <br><br>
+					HLA-DR <input type="number" name="hla_dr_1" max_length="5" required>&nbsp;&nbsp;
+					<input type="number" name="hla_dr_2" size="5" required>
 				</td>
 			</tr>
 			<tr><th>Medical History</th><td><textarea rows="7" cols="60"></textarea></td></tr>

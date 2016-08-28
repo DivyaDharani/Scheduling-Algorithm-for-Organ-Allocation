@@ -31,7 +31,7 @@ public class Login extends HttpServlet
 			{
 				if(password.equals(result_set.getString("Password")))
 				{
-					session.setAttribute("error","");
+					session.setAttribute("login_error","");
 					if(type.equals("donor"))
 					{
 						int donor_id = result_set.getInt("ID");
@@ -57,14 +57,14 @@ public class Login extends HttpServlet
 				else
 				{	
 					//pw.println("<html><body><center>Wrong password "+user_name+"!");
-					session.setAttribute("error","Wrong password!");
+					session.setAttribute("login_error","Wrong password!");
 					RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
 					dispatcher.forward(req,res);
 				}
 			}
 			else
 			{
-				session.setAttribute("error","No registered user in the name "+user_name+"!");
+				session.setAttribute("login_error","No registered user in the name "+user_name+"!");
 				//RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
 				//dispatcher.forward(req,res);
 				res.sendRedirect("login.jsp");

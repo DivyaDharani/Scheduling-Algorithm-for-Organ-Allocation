@@ -22,7 +22,7 @@ public class Registration extends HttpServlet
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/kidney_transplantation","root","root");
 			
 			PreparedStatement pstmt=null;
-			String sql="create table "+table_name+"(ID INT NOT NULL AUTO_INCREMENT,RegistrationType VARCHAR(15),UserName VARCHAR(20) NOT NULL ,Password VARCHAR(20) NOT NULL,PRIMARY KEY(ID,UserName))";
+			String sql="create table "+table_name+"(ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,RegistrationType VARCHAR(15),UserName VARCHAR(20) NOT NULL ,Password VARCHAR(20) NOT NULL)";
 		
 			try
 			{
@@ -33,19 +33,31 @@ public class Registration extends HttpServlet
 			{
 				//table already exists
 			}
-			pstmt = conn.prepareStatement("insert into "+table_name+"(RegistrationType,UserName,Password) values(?,?,?)");
-			pstmt.setString(1,registration_option);
-			pstmt.setString(2,user_name);
-			pstmt.setString(3,password);
-			pstmt.executeUpdate();
-			pw.println("<html><body><center>Thank you for registering with us "+user_name+"!");
-			session.setAttribute("error","");
-			if(registration_option.equals("donor"))
+
+			pstmt = conn.prepareStatement("select UserName from "+table_name+" where UserName='"+user_name+"'");
+			ResultSet result = pstmt.executeQuery();
+			if(result.next())
 			{
-				RequestDispatcher dispatcher = req.getRequestDispatcher("donor_page.jsp");
-				dispatcher.forward(req,res);
+
+				session.setAttribute("reg_error","User already exists!");
+				res.sendRedirect("register.jsp");
 			}
-		}
+			else
+			{
+				pstmt = conn.prepareStatement("insert into "+table_name+"(RegistrationType,UserName,Password) values(?,?,?)");
+				pstmt.setString(1,registration_option);
+				pstmt.setString(2,user_name);
+				pstmt.setString(3,password);
+				pstmt.executeUpdate();
+				pw.println("<html><body><center>Thank you for registering with us "+user_name+"!");
+				session.setAttribute("reg_error","");
+				if(registration_option.equals("donor"))
+				{
+					RequestDispatcher dispatcher = req.getRequestDispatcher("donor_page.jsp");
+					dispatcher.forward(req,res);
+				}
+			}
+		}	
 		catch(Exception ex)
 		{
 			StringWriter swr = new StringWriter();
@@ -53,8 +65,6 @@ public class Registration extends HttpServlet
 			ex.printStackTrace(pwr);
 			String stackTrace = swr.toString();
 			pw.println(stackTrace);
-			session.setAttribute("error","User already exists!!");
-			res.sendRedirect("register.jsp");
 		}
 
 	}

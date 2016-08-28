@@ -16,11 +16,12 @@ public class PersonalDetails extends HttpServlet
 		HttpSession session = req.getSession();
 		String type = (String) session.getAttribute("type");
 		PrintWriter pw = res.getWriter();
+		String field="";
+		int id = (Integer)session.getAttribute("ID");
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/kidney_transplantation","root","root");
-			String field="";
 			if(type.equals("donor"))
 				field = "DonorID";
 			else if (type.equals("recipient"))
@@ -38,8 +39,16 @@ public class PersonalDetails extends HttpServlet
 			{
 				//table already exists
 			}
-			pstmt =conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?)");
-			pstmt.setInt(1,(Integer)session.getAttribute("ID"));
+			pstmt = conn.prepareStatement("select * from "+type+"_details where "+field+" = "+id);
+			ResultSet result = pstmt.executeQuery();
+			if(result.next())
+			{
+				pstmt = conn.prepareStatement("delete from "+type+"_details where "+field+" = "+id);
+				pstmt.executeUpdate();
+			}
+			
+			pstmt = conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?)");
+			pstmt.setInt(1,id);
 			pstmt.setString(2,name);
 			pstmt.setInt(3,age);
 			pstmt.setString(4,dob);
@@ -47,6 +56,7 @@ public class PersonalDetails extends HttpServlet
 			pstmt.setString(6,contact_no);
 			pstmt.setString(7,type);
 			pstmt.executeUpdate();
+			res.sendRedirect("donor_page.jsp");
 		}
 		catch(Exception ex)
 		{

@@ -3,8 +3,8 @@
 <br><br><br><br><br><br>
 <div id="errordiv" style="color:red;">
 	<% 
-		if(session.getAttribute("error")!=null) 
-	  		out.println(session.getAttribute("error"));
+		if(session.getAttribute("login_error")!=null) 
+	  		out.println(session.getAttribute("login_error"));
 	%>
 </div>
 <br><br>
