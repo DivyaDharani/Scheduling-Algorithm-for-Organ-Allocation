@@ -40,7 +40,7 @@ public class Login extends HttpServlet
 						session.setAttribute("type","donor");
 						session.setAttribute("ID",donor_id);
 						session.setAttribute("name",donor.getName());	
-						RequestDispatcher dispatcher = req.getRequestDispatcher("donor_page.jsp");
+						RequestDispatcher dispatcher = req.getRequestDispatcher("patient_page.jsp");
 						dispatcher.forward(req,res);
 					}
 					else if(type.equals("recipient"))

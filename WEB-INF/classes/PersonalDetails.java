@@ -56,7 +56,7 @@ public class PersonalDetails extends HttpServlet
 			pstmt.setString(6,contact_no);
 			pstmt.setString(7,type);
 			pstmt.executeUpdate();
-			res.sendRedirect("donor_page.jsp");
+			res.sendRedirect("patient_page.jsp");
 		}
 		catch(Exception ex)
 		{
