@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 class Donor 
 {
 	private int id;
@@ -22,35 +24,46 @@ class Donor
 		}
 	}
 
-	void getAllValuesFromDB()
+	void getAllValuesFromDB() 
 	{
-		pstmt = conn.prepareStatement("select * from donor_details where DonorID = "+id);
-		ResultSet result = pstmt.executeQuery();
-		if(result.next())
+		try
 		{
-			name = result.getString("Name");
-			gender = result.getString("Gender");
-			contact_no = result.getString("ContactNumber");
+			pstmt = conn.prepareStatement("select * from donor_details where DonorID = "+id);
+			ResultSet result = pstmt.executeQuery();
+			if(result.next())
+			{
+				name = result.getString("Name");
+				gender = result.getString("Gender");
+				contact_no = result.getString("ContactNumber");
+			}
+
+			pstmt = conn.prepareStatement("select * from donor_medical_report where DonorID = "+id);
+			result = pstmt.executeQuery();
+			if(result.next())
+			{
+				dob = result.getString("DOB");
+				//Calculate age
+				int year = Integer.parseInt(dob.split("-")[0]);
+				Date date = new Date();
+	    		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy");
+	    		int cur_year = Integer.parseInt(dateformat.format(date));
+
+	    		age = cur_year - year;
+
+				blood_group = result.getString("BloodGroup");
+				hla_a1 = result.getInt("hla_a_1");
+				hla_a2 = result.getInt("hla_a_2");
+				hla_b1 = result.getInt("hla_b_1");
+				hla_b2= result.getInt("hla_b_2");
+				hla_dr1 = result.getInt("hla_dr_1");
+				hla_dr2 = result.getInt("hla_dr_2");
+				medical_history = result.getString("MedicalHistory");
+
+			}
 		}
-
-		pstmt = conn.prepareStatement("select * from donor_medical_report where DonorID = "+id);
-		result = pstmt.executeQuery();
-		if(result.next())
+		catch(Exception e)
 		{
-			dob = result.getString("DOB");
-			//(Integer.parseInt(dob.splitString("-")[0]);
-			//Calculate age
-
-
-			blood_group = result.getString("BloodGroup");
-			hla_a1 = result.getInt("hla_a_1");
-			hla_a2 = result.getInt("hla_a_2");
-			hla_b1 = result.getInt("hla_b_1");
-			hla_b2= result.getInt("hla_b_2");
-			hla_dr1 = result.getInt("hla_dr_1");
-			hla_dr2 = result.getInt("hla_dr_2");
-			medical_history = result.getString("MedicalHistory");
-
+			e.printStackTrace();
 		}
 	}
 
