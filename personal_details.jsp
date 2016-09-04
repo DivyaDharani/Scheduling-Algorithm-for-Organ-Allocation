@@ -49,6 +49,7 @@ div#div1
 		&nbsp; &nbsp; <input type="radio" name="gender" value="female" required>Female<br><br>
 		Date of Birth : <input type="date" name="dob" required><br><br>
 		Contact Number : <input type="number" name="contact_no" required><br><br>
+		Emergency Contact Number : <input type="number" name="emergency_contact" required><br><br>
 		<!--Wanna be a <input type="radio" name="type" value="donor" required>Donor
 		&nbsp; &nbsp; <input type="radio" name="type" value="recipient" required>Recipient
 		<br><br>-->

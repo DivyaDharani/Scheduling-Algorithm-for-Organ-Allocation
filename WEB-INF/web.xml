@@ -72,4 +72,13 @@
     <url-pattern>/medical_report</url-pattern>
   </servlet-mapping>
 
+<servlet>
+    <servlet-name>hospital_reg</servlet-name>
+    <servlet-class>HospitalRegistration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hospital_reg</servlet-name>
+    <url-pattern>/hospital_reg</url-pattern>
+  </servlet-mapping>
+
 </web-app>

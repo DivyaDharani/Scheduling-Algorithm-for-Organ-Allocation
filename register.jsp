@@ -35,7 +35,6 @@
 		<select name="registration_option">
 			<option value="donor">Donor</option>
 			<option value="recipient">Recipient</option>
-			<option value="hospital">Hospital</option>
 		</select> <br><br>
 		User Name : <input type="text" name="user_name"><br><br>
 		Password : <input type="password" name="password"><br><br>

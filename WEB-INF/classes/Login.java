@@ -32,31 +32,23 @@ public class Login extends HttpServlet
 				if(password.equals(result_set.getString("Password")))
 				{
 					session.setAttribute("login_error","");
-					if(type.equals("donor"))
+					if(type.equals("donor") || type.equals("recipient"))
 					{
-						int donor_id = result_set.getInt("ID");
-						Donor donor = new Donor(donor_id);
-						session.setAttribute("donor",donor);
-						session.setAttribute("type","donor");
-						session.setAttribute("ID",donor_id);
-						session.setAttribute("name",donor.getName());	
+						int id = result_set.getInt("ID");
+						session.setAttribute("ID",id);
+						session.setAttribute("type",type);	
 						RequestDispatcher dispatcher = req.getRequestDispatcher("patient_page.jsp");
 						dispatcher.forward(req,res);
 					}
-					else if(type.equals("recipient"))
+					else 
 					{
-						/*int recipient_id = result_set.getInt("ID");
-						Recipient recipient = new Recipient(recipient_id);
-						session.setAttribute("type","recipient");
-						session.setAttribute("ID",recipient_id);
-						session.setAttribute("name",recipient.getName());*/
-						RequestDispatcher dispatcher = req.getRequestDispatcher("recipient_page.html");
+						RequestDispatcher dispatcher = req.getRequestDispatcher("hospital_profile.html");
+						dispatcher.forward(req,res);
 					}
 
 				}
 				else
 				{	
-					//pw.println("<html><body><center>Wrong password "+user_name+"!");
 					session.setAttribute("login_error","Wrong password!");
 					RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
 					dispatcher.forward(req,res);

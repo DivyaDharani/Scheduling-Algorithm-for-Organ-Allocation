@@ -13,6 +13,7 @@ public class PersonalDetails extends HttpServlet
 		String dob = req.getParameter("dob");
 		String gender = req.getParameter("gender");
 		String contact_no = req.getParameter("contact_no");
+		String emergency_contact = req.getParameter("emergency_contact");
 		HttpSession session = req.getSession();
 		String type = (String) session.getAttribute("type");
 		PrintWriter pw = res.getWriter();
@@ -26,7 +27,7 @@ public class PersonalDetails extends HttpServlet
 				field = "DonorID";
 			else if (type.equals("recipient"))
 				field = "RecipientID";
-			String sql="create table "+type+"_details ("+field+" int NOT NULL,Name VARCHAR(20),Age INT, DOB VARCHAR(10),Gender VARCHAR(6),ContactNumber VARCHAR(10),Type VARCHAR(15),FOREIGN KEY("+field+") REFERENCES "+type+"_credentials(ID))";
+			String sql="create table "+type+"_details ("+field+" int NOT NULL,Name VARCHAR(20),Age INT, DOB VARCHAR(10),Gender VARCHAR(6),ContactNumber VARCHAR(10),EmergencyContact VARCHAR(10), Type VARCHAR(15),FOREIGN KEY("+field+") REFERENCES "+type+"_credentials(ID))";
 			PreparedStatement pstmt=null;
 			try
 			{
@@ -47,14 +48,15 @@ public class PersonalDetails extends HttpServlet
 				pstmt.executeUpdate();
 			}
 			
-			pstmt = conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1,id);
 			pstmt.setString(2,name);
 			pstmt.setInt(3,age);
 			pstmt.setString(4,dob);
 			pstmt.setString(5,gender);
 			pstmt.setString(6,contact_no);
-			pstmt.setString(7,type);
+			pstmt.setString(7,emergency_contact);
+			pstmt.setString(8,type);
 			pstmt.executeUpdate();
 			res.sendRedirect("patient_page.jsp");
 		}
