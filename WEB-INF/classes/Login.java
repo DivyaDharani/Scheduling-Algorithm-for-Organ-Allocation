@@ -11,8 +11,11 @@ public class Login extends HttpServlet
 		String user_name = req.getParameter("user_name");
 		String password = req.getParameter("password");
 		String type = req.getParameter("type");
-
-		String table_name = type+"_credentials";
+		String table_name;
+		if(type.equals("hospital"))
+			table_name = "hospital_details";
+		else
+			table_name = type+"_credentials";
 
 		PrintWriter pw = res.getWriter();
 		HttpSession session = req.getSession(true);

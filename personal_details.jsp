@@ -50,9 +50,16 @@ div#div1
 		Date of Birth : <input type="date" name="dob" required><br><br>
 		Contact Number : <input type="number" name="contact_no" required><br><br>
 		Emergency Contact Number : <input type="number" name="emergency_contact" required><br><br>
-		<!--Wanna be a <input type="radio" name="type" value="donor" required>Donor
-		&nbsp; &nbsp; <input type="radio" name="type" value="recipient" required>Recipient
-		<br><br>-->
+		<%
+			String type = (String)session.getAttribute("type");
+			if(type.equals("recipient"))
+			{
+				String code = "Hospital Name : <input type='text' name='hospital' required><br><br>";
+				code+="City : <input type='text' name='city' required><br><br>";
+				code+="Patient ID (provided by hospital) : <input type='number' name='patient_id' required><br><br>";
+				out.println(code);
+			}
+			%>
 		<input type="submit" value="SUBMIT" id="submit" >
 	</form>
 	<div>

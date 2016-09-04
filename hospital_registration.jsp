@@ -47,14 +47,14 @@ div#div1
 </style>
 </head>
 <body bgcolor="black">
-	<center><br>
+	<center>
 	<h1 style="color:white;">HOSPITAL REGISTRATION</h1>
-	<hr><br>
+	<hr>
 	<div id="errordiv" style="color:red;">
 	<% if(session.getAttribute("reg_error")!=null)
 			out.println(session.getAttribute("reg_error"));
 	%>
-	</div><br><br>
+	</div><br>
 	<div id="div1">
 	<form action="hospital_reg" method="post">
 		<table cellpadding="10" cellspacing="20" style="border-collapse:collapse;color:white;font-size:20px;">
