@@ -35,16 +35,17 @@ public class Login extends HttpServlet
 				if(password.equals(result_set.getString("Password")))
 				{
 					session.setAttribute("login_error","");
+					session.setAttribute("ID",result_set.getInt("ID"));
+					session.setAttribute("type",type);
 					if(type.equals("donor") || type.equals("recipient"))
 					{
-						int id = result_set.getInt("ID");
-						session.setAttribute("ID",id);
-						session.setAttribute("type",type);	
 						RequestDispatcher dispatcher = req.getRequestDispatcher("patient_page.jsp");
 						dispatcher.forward(req,res);
 					}
-					else 
+					else //hospital
 					{
+						session.setAttribute("hospital_name",result_set.getString("HospitalName"));
+						session.setAttribute("city",result_set.getString("City"));
 						RequestDispatcher dispatcher = req.getRequestDispatcher("hospital_profile.html");
 						dispatcher.forward(req,res);
 					}
