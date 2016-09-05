@@ -54,6 +54,8 @@ public class PersonalDetails extends HttpServlet
 				pstmt.executeUpdate();
 			}
 			
+			
+
 			if(type.equals("recipient"))
 			{
 				pstmt = conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?,?,?,?,?)");
@@ -64,7 +66,7 @@ public class PersonalDetails extends HttpServlet
 			}
 			else
 			{
-				pstmt = conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?,?)");
+				pstmt = conn.prepareStatement("insert into "+type+"_details("+field+",Name,Age,DOB,Gender,ContactNumber,EmergencyContact,Type) values(?,?,?,?,?,?,?,?)");
 				pstmt.setString(8,type);
 			}
 			pstmt.setInt(1,id);
@@ -74,6 +76,7 @@ public class PersonalDetails extends HttpServlet
 			pstmt.setString(5,gender);
 			pstmt.setString(6,contact_no);
 			pstmt.setString(7,emergency_contact);
+			
 			pstmt.executeUpdate();
 			res.sendRedirect("patient_page.jsp");
 		}

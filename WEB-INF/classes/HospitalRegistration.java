@@ -15,14 +15,14 @@ public class HospitalRegistration extends HttpServlet
 
 			Statement stmt = conn.createStatement();
 
-			String hosp_name = req.getParameter("name");
+			String hosp_name = req.getParameter("hosp_name");
 			String city = req.getParameter("city");
-			String opo = req.getParameter("opo");
+			String hosp_type = req.getParameter("hosp_type");
 			String phone = req.getParameter("phone");
 			String user_name = req.getParameter("user_name");
 			String password = req.getParameter("password");
 
-			String sql = "create table hospital_details (ID int AUTO_INCREMENT PRIMARY KEY, HospitalName varchar(30), City varchar(20), OPO varchar(20), Phone varchar(10), UserName varchar(20), Password varchar(10))";
+			String sql = "create table hospital_details (ID int AUTO_INCREMENT PRIMARY KEY, HospitalName varchar(30), City varchar(20), HospitalType varchar(10), Phone varchar(10), UserName varchar(20), Password varchar(10))";
 			
 			try
 			{
@@ -31,11 +31,6 @@ public class HospitalRegistration extends HttpServlet
 			catch(Exception e)
 			{
 				//table already exists
-
-				/*StringWriter sw = new StringWriter();
-				PrintWriter pw = new PrintWriter(sw);
-				e.printStackTrace(pw);
-				pwriter.println(sw.toString());*/
 			}
 
 			HttpSession session = req.getSession(true);
@@ -58,11 +53,11 @@ public class HospitalRegistration extends HttpServlet
 				else
 				{
 					session.setAttribute("reg_error","");
-					sql = "insert into hospital_details(HospitalName, City, OPO, Phone, UserName, Password) values(?,?,?,?,?,?)";
+					sql = "insert into hospital_details(HospitalName, City, HospitalType, Phone, UserName, Password) values(?,?,?,?,?,?)";
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1,hosp_name);
 					pstmt.setString(2,city);
-					pstmt.setString(3,opo);
+					pstmt.setString(3,hosp_type);
 					pstmt.setString(4,phone);
 					pstmt.setString(5,user_name);
 					pstmt.setString(6,password);

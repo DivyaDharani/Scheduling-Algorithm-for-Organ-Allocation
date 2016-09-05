@@ -59,7 +59,7 @@ div#div1
 	<form action="hospital_reg" method="post">
 		<table cellpadding="10" cellspacing="20" style="border-collapse:collapse;color:white;font-size:20px;">
 			<tr><th>Name of hospital</th>
-				<td><input type="text" name="name" required></td>
+				<td><input type="text" name="hosp_name" required></td>
 			</tr>
 			<tr><th>Location(City)</th>
 			<td>
@@ -73,13 +73,11 @@ div#div1
 		  			<option value="Salem">Salem</option>
 				</select>
 			</td></tr>
-			<tr><th>OPO</th>
+			<tr><th>Type of Hospital</th>
 			<td>
-				<select name="opo" style="width:230px;" required>
-		  			<option value="Chennai">Chennai</option>
-		  			<option value="Madurai">Madurai</option>
-		  			<option value="Trichy">Trichy</option>
-		  			<option value="Coimbatore">Coimbatore</option>
+				<select name="hosp_type" style="width:230px;" required>
+					<option value="private">Private</option>
+		  			<option value="government">Government</option>
 				</select>
 			</td></tr>
 			<tr><th>Contact Number</th>

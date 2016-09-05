@@ -1,0 +1,25 @@
+create table city_opo_details(City varchar(20) PRIMARY KEY,OPO varchar(20));
+
+insert into city_opo_details values("Chennai","Chennai");
+insert into city_opo_details values("Thiruvallur","Chennai");
+insert into city_opo_details values("Vellore","Chennai");
+insert into city_opo_details values("Viluppuram","Chennai");
+insert into city_opo_details values("Thiruvannamalai","Chennai");
+
+insert into city_opo_details values("Coimbatore","Coimbatore");
+insert into city_opo_details values("Nilgris","Coimbatore");
+insert into city_opo_details values("Erode","Coimbatore");
+insert into city_opo_details values("Salem","Coimbatore");
+insert into city_opo_details values("Tiruppur","Coimbatore");
+
+insert into city_opo_details values("Madurai","Madurai");
+insert into city_opo_details values("Kanyakumari","Madurai");
+insert into city_opo_details values("Tuticorin","Madurai");
+insert into city_opo_details values("Thirunelveli","Madurai");
+insert into city_opo_details values("Dindigul","Madurai");
+
+insert into city_opo_details values("Trichy","Trichy");
+insert into city_opo_details values("Namakkal","Trichy");
+insert into city_opo_details values("Tanjore","Trichy");
+insert into city_opo_details values("Perambalur","Trichy");
+insert into city_opo_details values("Karur","Trichy");

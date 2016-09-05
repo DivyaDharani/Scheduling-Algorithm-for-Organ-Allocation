@@ -25,7 +25,6 @@
 	<script>
 		function redirect_to(loc)
 		{
-
 				window.location=loc;
 		}
 	</script>
