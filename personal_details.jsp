@@ -44,7 +44,6 @@ div#div1
 	<br><br>
 	<form action="personal_details" method="post">
 		Name : <input type="text" name="name" required><br><br>
-		Age  : <input type="number" name="age" required><br><br>
 		Gender : &nbsp; <input type="radio" name="gender" value="male" required>Male
 		&nbsp; &nbsp; <input type="radio" name="gender" value="female" required>Female<br><br>
 		Date of Birth : <input type="date" name="dob" required><br><br>

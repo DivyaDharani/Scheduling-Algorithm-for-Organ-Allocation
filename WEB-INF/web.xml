@@ -81,4 +81,13 @@
     <url-pattern>/hospital_reg</url-pattern>
   </servlet-mapping>
 
+<servlet>
+    <servlet-name>find_recipient</servlet-name>
+    <servlet-class>FindRecipient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>find_recipient</servlet-name>
+    <url-pattern>/find_recipient</url-pattern>
+  </servlet-mapping>
+
 </web-app>

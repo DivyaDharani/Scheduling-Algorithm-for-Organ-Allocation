@@ -9,7 +9,6 @@ public class PersonalDetails extends HttpServlet
 	{
 		res.setContentType("text/html");
 		String name = req.getParameter("name");
-		int age = Integer.parseInt(req.getParameter("age"));
 		String dob = req.getParameter("dob");
 		String gender = req.getParameter("gender");
 		String contact_no = req.getParameter("contact_no");
@@ -33,7 +32,7 @@ public class PersonalDetails extends HttpServlet
 				city = req.getParameter("city");
 				patient_id = Integer.parseInt(req.getParameter("patient_id"));
 			}
-			String sql="create table "+type+"_details ("+field+" int NOT NULL,Name VARCHAR(20),Age INT, DOB VARCHAR(10),Gender VARCHAR(6),ContactNumber VARCHAR(10),EmergencyContact VARCHAR(10), Hospital VARCHAR(30), City VARCHAR(20), PatientID int,Type VARCHAR(15),FOREIGN KEY("+field+") REFERENCES "+type+"_credentials(ID))";
+			String sql="create table "+type+"_details ("+field+" int NOT NULL,Name VARCHAR(20),DOB VARCHAR(10),Gender VARCHAR(6),ContactNumber VARCHAR(10),EmergencyContact VARCHAR(10), Hospital VARCHAR(30), City VARCHAR(20), PatientID int,Type VARCHAR(15),FOREIGN KEY("+field+") REFERENCES "+type+"_credentials(ID))";
 			PreparedStatement pstmt=null;
 			try
 			{
@@ -58,24 +57,23 @@ public class PersonalDetails extends HttpServlet
 
 			if(type.equals("recipient"))
 			{
-				pstmt = conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?,?,?,?,?)");
-				pstmt.setString(8,hospital);
-				pstmt.setString(9,city);
-				pstmt.setInt(10,patient_id);
-				pstmt.setString(11,type);
+				pstmt = conn.prepareStatement("insert into "+type+"_details values(?,?,?,?,?,?,?,?,?,?)");
+				pstmt.setString(7,hospital);
+				pstmt.setString(8,city);
+				pstmt.setInt(9,patient_id);
+				pstmt.setString(10,type);
 			}
 			else
 			{
-				pstmt = conn.prepareStatement("insert into "+type+"_details("+field+",Name,Age,DOB,Gender,ContactNumber,EmergencyContact,Type) values(?,?,?,?,?,?,?,?)");
-				pstmt.setString(8,type);
+				pstmt = conn.prepareStatement("insert into "+type+"_details("+field+",Name,DOB,Gender,ContactNumber,EmergencyContact,Type) values(?,?,?,?,?,?,?)");
+				pstmt.setString(7,type);
 			}
 			pstmt.setInt(1,id);
 			pstmt.setString(2,name);
-			pstmt.setInt(3,age);
-			pstmt.setString(4,dob);
-			pstmt.setString(5,gender);
-			pstmt.setString(6,contact_no);
-			pstmt.setString(7,emergency_contact);
+			pstmt.setString(3,dob);
+			pstmt.setString(4,gender);
+			pstmt.setString(5,contact_no);
+			pstmt.setString(6,emergency_contact);
 			
 			pstmt.executeUpdate();
 			res.sendRedirect("patient_page.jsp");

@@ -23,7 +23,7 @@ public class MedicalReport extends HttpServlet
 					field = "DonorID";
 				else if(type.equals("recipient"))
 					field = "RecipientID";
-				sql = "create table donor_medical_report ("+field+" int, DOB date, BloodGroup varchar(2), HLA_A1 int,HLA_A2 int, HLA_B1 int, HLA_B2 int, HLA_DR1 int, HLA_DR2 int, MedicalHistory varchar(1000), FOREIGN KEY("+field+") REFERENCES "+type+"_credentials(ID))";				
+				sql = "create table "+table_name+" ("+field+" int, DOB date, BloodGroup varchar(2), HLA_A1 int,HLA_A2 int, HLA_B1 int, HLA_B2 int, HLA_DR1 int, HLA_DR2 int, MedicalHistory varchar(1000), FOREIGN KEY("+field+") REFERENCES "+type+"_credentials(ID))";				
 				try
 				{
 					pstmt = conn.prepareStatement(sql);
