@@ -1,23 +1,28 @@
 <html>
 	<head>
+		<script src="jquery-3.0.0.js"></script>
 		<script>
+			$(function(){
+				$("#header").load("header.html");
+			});
 			function check_password() 
 			{
-		    var x = document.getElementsByName("password")[0].value;
-		    var y = document.getElementsByName("re_password")[0].value;
-		    document.getElementById("div1").innerHTML = x.value;
-		    if(x!=y)
-		    {
-		    	document.getElementById("div1").innerHTML = "Passwords didn't match";
-		    	return false;
-		    }
-		    else
-		   	{
-		    	document.getElementById("div1").innerHTML = "Passwords matched";
-		   		return true;
-		   	}
+			    var x = document.getElementsByName("password")[0].value;
+			    var y = document.getElementsByName("re_password")[0].value;
+			    document.getElementById("div1").innerHTML = x.value;
+			    if(x!=y)
+			    {
+			    	document.getElementById("div1").innerHTML = "Passwords didn't match";
+			    	return false;
+			    }
+			    else
+			   	{
+			    	document.getElementById("div1").innerHTML = "Passwords matched";
+			   		return true;
+			   	}
 			}
 		</script>
+		
 	</head>
 <body>
 	<center>
