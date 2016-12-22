@@ -1,0 +1,6 @@
+	give only the registered hospitals as options for the recipients
+	handle the case when recipients don't fill medical details (don't include such patients while searching in FindRecipient.java)
+	make patients' status available when they fill both personal and medical details or enable  medical report filling option only after personal details are filled and then while searching for recipients, pick recipients whose IDs are in recipient_medical_report table
+	hospital registration page => include all the hospitals in city_opo_details table in drop down menu
+ 
+			

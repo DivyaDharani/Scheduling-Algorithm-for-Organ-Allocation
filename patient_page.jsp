@@ -38,7 +38,7 @@
 		<tr>
 			<td><button onclick="redirect_to('personal_details.jsp')"><b>Submit your personal details</b></button></td>
 			<td><button onclick="redirect_to('medical_report.html')"><b>Submit medical details</b></button></td>
-			<td><button onclick="redirect_to('find_recipient')"><b>Search for a Recipient</b></button></td>
+			<td><button onclick="redirect_to('find_recipient.jsp')"><b>Search for a Recipient</b></button></td>
 		</tr>
 	</table>	
 </body>

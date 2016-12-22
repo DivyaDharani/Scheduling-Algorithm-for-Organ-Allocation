@@ -49,16 +49,23 @@ div#div1
 		Date of Birth : <input type="date" name="dob" required><br><br>
 		Contact Number : <input type="number" name="contact_no" required><br><br>
 		Emergency Contact Number : <input type="number" name="emergency_contact" required><br><br>
+		<%@ page import="java.sql.*" %>
 		<%
 			String type = (String)session.getAttribute("type");
 			if(type.equals("recipient"))
 			{
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kidney_transplantation","root","root");
+
+				String sql = "select HospitalName from hospital_details";
+				---------------------------------------------------------------continue from this
+
 				String code = "Hospital Name : <input type='text' name='hospital' required><br><br>";
 				code+="City : <input type='text' name='city' required><br><br>";
 				code+="Patient ID (provided by hospital) : <input type='number' name='patient_id' required><br><br>";
 				out.println(code);
 			}
-			%>
+		%>
 		<input type="submit" value="SUBMIT" id="submit" >
 	</form>
 	<div>

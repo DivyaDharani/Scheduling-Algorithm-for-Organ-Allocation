@@ -44,11 +44,11 @@ public class FindRecipient extends HttpServlet
 	{
 		try
 		{
+			//only for hospital login, this part will work fine
 			city = (String)session.getAttribute("city");
 			if(search_type.equals("within_hospital"))
 			{
 				hospital_name = (String)session.getAttribute("hospital_name");
-
 				sql = "select RecipientID from recipient_details where Hospital = '"+hospital_name+"' and City = '"+city+"'";
 			}
 			else if(search_type.equals("within_OPO"))
@@ -81,6 +81,7 @@ public class FindRecipient extends HttpServlet
 			else
 			{
 				//no recipients in the selected category
+				pwriter.println("<html><body><center><br><br><br><br>There are no recipients in the selected category");
 			}
 		}
 		catch(Exception e)
@@ -121,7 +122,8 @@ public class FindRecipient extends HttpServlet
 		for(i=0;i<n;i++)
 		{
 			pwriter.print("Recipient ID: "+recipients[i].id);
-			pwriter.println("\t Name: "+recipients[i].name);
+			pwriter.print("\t Name: "+recipients[i].name);
+			pwriter.println("\t Points: "+recipients[i].points);
 		}
 
 	}
