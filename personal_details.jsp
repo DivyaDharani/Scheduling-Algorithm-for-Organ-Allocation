@@ -57,10 +57,18 @@ div#div1
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kidney_transplantation","root","root");
 
-				String sql = "select HospitalName from hospital_details";
-				---------------------------------------------------------------continue from this
+				String sql = "select * from hospital_details";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet result = pstmt.executeQuery();
+				String code = "Hospital : <select id='hospital_selection'>";
+				String name;
+				while(result.next())
+				{
+					name = result.getString("HospitalName");	
+					code += "<option value='"+name+"'>"+name+"</option>";
+				}
+				code += "</select><br><br>";
 
-				String code = "Hospital Name : <input type='text' name='hospital' required><br><br>";
 				code+="City : <input type='text' name='city' required><br><br>";
 				code+="Patient ID (provided by hospital) : <input type='number' name='patient_id' required><br><br>";
 				out.println(code);
